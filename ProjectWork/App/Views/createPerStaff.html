@@ -1,0 +1,86 @@
+﻿<div ng-controller="createPerStaffCtrl">
+    <div class="card">
+        <div class="card-header">
+            <h3>Add Permanent Staff</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <form name="frmPerStaff" ng-submit="insertPerStaff(frmPerStaff)" novalidate>
+                    <div class="form-group row">
+                        <label class="col-form-label col-form-label-sm col-3">Department</label>
+                        <div class="col-4">
+                            <select name="deparmentId" ng-options="item.department.DepartmentId as item.department.DepartmentName for item in model.depts" class="form-control form-control-sm"
+                                    ng-model="newPerStaffs.DepartmentId" required>
+                                <option value="">Select</option>
+                            </select>
+                            <div ng-messages="frmPerStaff.deparmentId.$error"
+                                 ng-show="frmPerStaff.deparmentId.$invalid && !frmPerStaff.deparmentId.$pristine">
+                                <div class="text-danger" ng-message="required">
+                                    Deparment is requred.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-form-label-sm col-3">Permanent Staff Name</label>
+                        <div class="col-4">
+                            <input name="perName"
+                                   class="form-control form-control-sm"
+                                   ng-model="newPerStaffs.PermanentStaffName"
+                                   required />
+                            <div ng-messages="frmPerStaff.perName.$error"
+                                 ng-show="frmPerStaff.perName.$invalid && !frmPerStaff.perName.$pristine">
+                                <div class="text-danger" ng-message="required">
+                                    Permanent Staff Name is requred.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-form-label-sm col-3">Join Date</label>
+                        <div class="col-4">
+                            <div class="input-group">
+                                <input name="joinDate"
+                                       ng-model="newPerStaffs.JoinDate"
+                                       class="form-control form-control-sm"
+                                       type="date" required />
+                            </div>
+                            <div ng-messages="frmPerStaff.joinDate.$error"
+                                 ng-show="frmPerStaff.joinDate.$invalid && !frmPerStaff.joinDate.$pristine">
+                                <div class="text-danger" ng-message="required">
+                                    Join Date is requred.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-form-label-sm col-3">Monthly Salary</label>
+                        <div class="col-4">
+                            <input name="monthlySalary"
+                                   class="form-control form-control-sm"
+                                   type="number"
+                                   ng-model="newPerStaffs.MonthlySalary"
+                                   required />
+                            <div ng-messages="frmPerStaff.monthlySalary.$error"
+                                 ng-show="frmPerStaff.monthlySalary.$invalid && !frmPerStaff.monthlySalary.$pristine">
+                                <div class="text-danger" ng-message="required">
+                                    Salary is requred.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-4 offset-3">
+                            <button type="submit" class="btn btn-success btn-sm" ng-disabled="frmPerStaff.$invalid"><i class="fa fa-save"> Save</i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a ng-href="#!/dept"><i class="fa fa-reply"></i> Back to department list</a>
+        </div>
+    </div>
+</div>

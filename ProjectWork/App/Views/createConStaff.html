@@ -1,0 +1,86 @@
+﻿<div ng-controller="createConStaffCtrl">
+    <div class="card">
+        <div class="card-header">
+            <h3>Add Contactual Staff</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <form name="frmConStaffs" ng-submit="insertConStaff(frmConStaffs)" novalidate>
+                    <div class="form-group row">
+                        <label class="col-form-label col-form-label-sm col-3">Department</label>
+                        <div class="col-4">
+                            <select name="deparmentId" ng-options="item.department.DepartmentId as item.department.DepartmentName for item in model.depts" class="form-control form-control-sm"
+                                    ng-model="newConStaffs.DepartmentId" required>
+                                <option value="">Select</option>
+                            </select>
+                            <div ng-messages="frmConStaffs.deparmentId.$error"
+                                 ng-show="frmConStaffs.deparmentId.$invalid && !frmConStaffs.deparmentId.$pristine">
+                                <div class="text-danger" ng-message="required">
+                                    Department is requred.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-form-label-sm col-3">Contactual Staff Name</label>
+                        <div class="col-4">
+                            <input name="contactualStaffName"
+                                   class="form-control form-control-sm"
+                                   ng-model="newConStaffs.ContactualStaffName"
+                                   required />
+                            <div ng-messages="frmConStaffs.contactualStaffName.$error"
+                                 ng-show="frmConStaffs.contactualStaffName.$invalid && !frmConStaffs.contactualStaffName.$pristine">
+                                <div class="text-danger" ng-message="required">
+                                    Contactual Staff Name is requred.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-form-label-sm col-3">Start Date</label>
+                        <div class="col-4">
+                            <div class="input-group">
+                                <input name="startDate"
+                                       ng-model="newConStaffs.StartDate"
+                                       class="form-control form-control-sm"
+                                       type="date" required />
+                            </div>
+                            <div ng-messages="frmConStaffs.startDate.$error"
+                                 ng-show="frmConStaffs.startDate.$invalid && !frmConStaffs.startDate.$pristine">
+                                <div class="text-danger" ng-message="required">
+                                    Start date is requred.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-form-label-sm col-3">Weekly Salary</label>
+                        <div class="col-4">
+                            <input name="weeklySalary"
+                                   class="form-control form-control-sm"
+                                   type="number"
+                                   ng-model="newConStaffs.WeeklySalary"
+                                   required />
+                            <div ng-messages="frmConStaffs.weeklySalary.$error"
+                                 ng-show="frmConStaffs.weeklySalary.$invalid && !frmConStaffs.weeklySalary.$pristine">
+                                <div class="text-danger" ng-message="required">
+                                    Salary is requred.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-4 offset-3">
+                            <button type="submit" class="btn btn-success btn-sm" ng-disabled="frmConStaffs.$invalid"><i class="fa fa-save"> Save</i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a ng-href="#!/dept"><i class="fa fa-reply"></i> Back to department list</a>
+        </div>
+    </div>
+</div>
